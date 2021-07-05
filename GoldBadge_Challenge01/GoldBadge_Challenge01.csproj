@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProgramUI.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="MenuRepo_Repository.cs" />
     <Compile Include="Program.cs" />

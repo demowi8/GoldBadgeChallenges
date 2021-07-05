@@ -10,7 +10,8 @@ namespace GoldBadge_Challenge01
     {
         static void Main(string[] args)
         {
-
+            ProgramUI ui = new ProgramUI();
+            ui.Run();
         }
     }
 }

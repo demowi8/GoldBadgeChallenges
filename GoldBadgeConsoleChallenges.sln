@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldBadge_Challenge01", "Go
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldBadge_Challenge01_UnitTest", "Challenge01_UnitTest\GoldBadge_Challenge01_UnitTest.csproj", "{6EBF1FA8-4274-46B3-847E-C25B6A44B6BA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GoldBadge_Challenge01_Folder", "GoldBadge_Challenge01_Folder", "{5754BF34-1531-4454-9B94-5A06E1B75139}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{59227838-62A3-4C5B-9125-CBFFCF4B5ED6} = {5754BF34-1531-4454-9B94-5A06E1B75139}
+		{6EBF1FA8-4274-46B3-847E-C25B6A44B6BA} = {5754BF34-1531-4454-9B94-5A06E1B75139}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7CE4F0C2-D823-41D6-8A2B-5E3BE8DE33BB}
