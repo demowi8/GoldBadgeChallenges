@@ -86,7 +86,6 @@ namespace GoldBadge_Challenge01
         private void RemoveMenuItem()
         {
             Console.Clear();
-            //Select item to delete
             Console.WriteLine("Which item would you like to remove?");
             int count = 0;
             //display all items
@@ -96,6 +95,29 @@ namespace GoldBadge_Challenge01
                 count++;
                 Console.WriteLine($"{count}. {item.Name}");
             }
+            int userInput = int.Parse(Console.ReadLine());
+            int targetIndex = userInput - 1;
+            //Valid INPut?
+            if (targetIndex >= 0 && targetIndex < menuItemList.Count())
+            {
+                //Delete the content
+                //Select item to delete
+                MenuItems targetItem = menuItemList[targetIndex];
+                if (_menuRepo.RemoveMenuItem(targetItem))
+                {
+                    //success message
+                    Console.WriteLine($"{targetItem.Name} removed from Menu!");
+                }
+                else
+                {
+                    Console.WriteLine("Sorry invalid selection");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid Selection");
+            }
+            ReduceCode();
         }
         private void ShowAllMenuItems()
         {
