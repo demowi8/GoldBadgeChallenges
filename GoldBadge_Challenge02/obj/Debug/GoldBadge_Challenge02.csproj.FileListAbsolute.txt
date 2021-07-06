@@ -1,0 +1,7 @@
+C:\Users\Desmond\Desktop\SD Gold Badge\FINAL Challenges\GoldBadgeConsoleApplicationChallenges\GoldBadge_Challenge02\bin\Debug\GoldBadge_Challenge02.exe.config
+C:\Users\Desmond\Desktop\SD Gold Badge\FINAL Challenges\GoldBadgeConsoleApplicationChallenges\GoldBadge_Challenge02\bin\Debug\GoldBadge_Challenge02.exe
+C:\Users\Desmond\Desktop\SD Gold Badge\FINAL Challenges\GoldBadgeConsoleApplicationChallenges\GoldBadge_Challenge02\bin\Debug\GoldBadge_Challenge02.pdb
+C:\Users\Desmond\Desktop\SD Gold Badge\FINAL Challenges\GoldBadgeConsoleApplicationChallenges\GoldBadge_Challenge02\obj\Debug\GoldBadge_Challenge02.csproj.AssemblyReference.cache
+C:\Users\Desmond\Desktop\SD Gold Badge\FINAL Challenges\GoldBadgeConsoleApplicationChallenges\GoldBadge_Challenge02\obj\Debug\GoldBadge_Challenge02.csproj.CoreCompileInputs.cache
+C:\Users\Desmond\Desktop\SD Gold Badge\FINAL Challenges\GoldBadgeConsoleApplicationChallenges\GoldBadge_Challenge02\obj\Debug\GoldBadge_Challenge02.exe
+C:\Users\Desmond\Desktop\SD Gold Badge\FINAL Challenges\GoldBadgeConsoleApplicationChallenges\GoldBadge_Challenge02\obj\Debug\GoldBadge_Challenge02.pdb
