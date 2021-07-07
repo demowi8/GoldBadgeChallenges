@@ -41,8 +41,13 @@ namespace GoldBadge_Challenge02
         {
             return _queueOfClaims.Peek();
         }
+        public Claims PullFromTopOfQueue()
+        {
+            return _queueOfClaims.Dequeue();
+        }
         //UPDATE
 
         //DELETE
+
     }
 }

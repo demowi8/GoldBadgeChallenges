@@ -70,22 +70,26 @@ namespace GoldBadge_Challenge02
             Console.WriteLine("\nDo you want to deal with this claim now(Y/N)?");
             string userChoice = Console.ReadLine().ToLower();
             List<string> userChoices = new List<string> { "y", "n" };
-            while (!userChoices.Any(userChoice.StartsWith))
+            while (!userChoices.Any(userChoice.Contains))
             {
                 Console.WriteLine("Y or N");
                 userChoice = Console.ReadLine();
-                if (userChoice == "Y")
-                {
-                    DisplayClaims(nextClaimUp); 
-                    ReduceCode();
-                }
-                else if (userChoice == "N")
-                {
-                    ReduceCode();
-                }
+            }
+            if (userChoice == "y")
+            {
+                Console.Clear();
+                DisplayClaims(nextClaimUp);
+                _claimRepo.PullFromTopOfQueue();
+                ReduceCode();
+            }
+            else if (userChoice == "n")
+            {
+                ReduceCode();
             }
 
+
         }
+
         private void AddANewClaim()
         {
             Console.Clear();
@@ -96,10 +100,17 @@ namespace GoldBadge_Challenge02
             newClaim.ClaimID = int.Parse(claimIdAsString);
 
             //claimtype
-            Console.WriteLine("Enter the Claim's Type:");
+            Console.WriteLine("Enter the Claim's Type:\n" +
+                "Type 1 for Car\n" +
+                "Type 2 for Home\n" +
+                "Type 3 for Theft");
             string stringClaimType = Console.ReadLine();
             newClaim.TypeOfClaim = (ClaimType)int.Parse(stringClaimType);
-
+            while (!stringClaimType.Any(stringClaimType.Contains))
+            {
+                Console.WriteLine("Invalid Input");
+                stringClaimType = Console.ReadLine();
+            }
 
             //claim description
             Console.WriteLine("Enter a Description of Claim:");
@@ -137,7 +148,7 @@ namespace GoldBadge_Challenge02
             Console.WriteLine($"\nClaimID: {claim.ClaimID}\n" +
                 $"Type: {claim.TypeOfClaim}\n" +
                 $"Description: {claim.Description}\n" +
-                $"Amount: {claim.ClaimAmount}\n" +
+                $"Amount: ${claim.ClaimAmount}\n" +
                 $"Date of Accident: {claim.DateOfIncident}\n" +
                 $"Date of Claim: {claim.DateOfClaim}\n" +
                 $"ValidClaim(t/f): {claim.IsValid}");

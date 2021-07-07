@@ -8,7 +8,7 @@ namespace GoldBadge_Challenge02
 {
     public enum ClaimType
     {
-        Car,
+        Car = 1,
         Home,
         Theft
     }
