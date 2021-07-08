@@ -28,7 +28,7 @@ namespace GoldBadge_Challenge03
  
         
         //READ
-        public Dictionary<string, Badges> GetKeyValuePairs()
+        public Dictionary<string, Badges> GetBadgesList()
         {
             return BadgesAndAccessDoors;
         }
