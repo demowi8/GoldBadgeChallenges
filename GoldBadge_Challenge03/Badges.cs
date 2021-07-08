@@ -9,7 +9,7 @@ namespace GoldBadge_Challenge03
     public class Badges
     {
         public string BadgeID { get; set; }
-        public List<string> AccessDoorsAvailable = new List<string>();
+        public List<string> AccessDoorsAvailable { get; set; }
         
         public Badges() { }
         

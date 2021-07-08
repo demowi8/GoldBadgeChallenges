@@ -9,24 +9,42 @@ namespace GoldBadge_Challenge03
     public class Badge_Repository
     {
         //DICTIONARY field
-        protected Dictionary<string, List<string>> BadgesAndAccessDoors = new Dictionary<string, List<string>>();
 
-        public void AddToDictionary()
-        {
-            List<string> accessDoors = new List<string>()
-            {
-                "A1", "A2", "A3", "B1", "B2", "B3"
-            };
+        protected Dictionary<string, Badges> BadgesAndAccessDoors = new Dictionary<string, Badges>();
 
-            BadgesAndAccessDoors.Add("12345", accessDoors);
-
-            BadgesAndAccessDoors["12345"].Add("B4");
-        }
         //CRUD
         //CREATE
-        public bool AddBadge
+        public bool AddToBadgeDictionary(string badgeId, Badges accessDoors)
+        {
+
+
+            int startingDictCount = BadgesAndAccessDoors.Count;
+            BadgesAndAccessDoors.Add(badgeId, accessDoors);
+            bool wasAddedToDict = (BadgesAndAccessDoors.Count > startingDictCount) ? true : false;
+            return wasAddedToDict;
+
+        }
+
+ 
+        
         //READ
+        public Dictionary<string, Badges> GetKeyValuePairs()
+        {
+            return BadgesAndAccessDoors;
+        }
+        public KeyValuePair<string, Badges> GetABadgeByID(string badgeID)
+        {
+            foreach(KeyValuePair<string, Badges> badge in BadgesAndAccessDoors)
+            {
+                if (badge.Key == badgeID)
+                {
+                    return badge;
+                }
+            }
+                return default;
+        }
         //UPDATE
+
         //DELETE
     }
 }
