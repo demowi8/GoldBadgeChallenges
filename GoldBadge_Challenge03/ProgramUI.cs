@@ -101,8 +101,12 @@ namespace GoldBadge_Challenge03
            Badges selectedBadge = _badgeRepo.GetABadgeByID(userInput);
 
 
-            Console.WriteLine($"{selectedBadge.BadgeID} has access to doors{selectedBadge.AccessDoorsAvailable}");
-            
+            Console.WriteLine($"{selectedBadge.BadgeID} has access to doors");
+            foreach (string accessDoorsAssigned in selectedBadge.AccessDoorsAvailable)
+            {
+                Console.WriteLine(accessDoorsAssigned);
+            }
+
             Console.WriteLine("What would you like to do?\n" +
                 "1. Remove a Door\n" +
                 "2. Add a Door");
@@ -131,14 +135,14 @@ namespace GoldBadge_Challenge03
             Dictionary<string, Badges> listOfBadges = _badgeRepo.GetBadgesList();
             foreach (KeyValuePair<string, Badges> badges in listOfBadges)
             {
-                DisplayBadges(badges);
+                DisplayBadge(badges);
             }
             ReduceCode(); 
         }
         //Helper Methods
-        private void DisplayBadges(KeyValuePair<string, Badges> badges)
+        private void DisplayBadge(KeyValuePair<string, Badges> badges)
         {
-            Console.WriteLine($" Badge #\n {badges.Key}\n Door Access\n");
+            Console.WriteLine($" Badge #\n {badges.Key}\n Door Access");
             foreach (string accessDoorsAssigned in badges.Value.AccessDoorsAvailable)
             {
                 Console.WriteLine(accessDoorsAssigned);
