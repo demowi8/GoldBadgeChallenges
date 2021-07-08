@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace GoldBadge_Challenge03
 {
-    class Badges
+    public class Badges
     {
+        public string BadgeID { get; set; }
+        public List<string> AccessDoorsAvailable = new List<string>();
+        
+        public Badges() { }
+        
+        public Badges(string badgeID, List<string> accessibleDoors)
+        {
+            BadgeID = badgeID;
+            AccessDoorsAvailable = accessibleDoors;
+        }
     }
 }

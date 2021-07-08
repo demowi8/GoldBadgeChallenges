@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoldBadge_Challenge03
 {
-    class ProgramUI
+    public class ProgramUI
     {
     }
 }
