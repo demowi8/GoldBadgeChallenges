@@ -12,7 +12,7 @@ namespace GoldBadge_Challenge03
 
         public void Run()
         {
-            SeedBadges(); 
+            SeedBadges();
 
             DisplayMenu();
         }
@@ -66,8 +66,8 @@ namespace GoldBadge_Challenge03
 
             Console.WriteLine("List a door it needs access to:");
             string userInput2 = Console.ReadLine();
-            newBadge.AccessDoorsAvailable.Add(userInput2); 
-            
+            newBadge.AccessDoorsAvailable.Add(userInput2);
+
             Console.WriteLine("Any other doors (y/n)?");
             string userInput3 = Console.ReadLine().ToLower();
             List<string> userChoices = new List<string> { "y", "n" };
@@ -76,29 +76,45 @@ namespace GoldBadge_Challenge03
                 Console.WriteLine("y or n");
                 userInput3 = Console.ReadLine();
             }
-            if (userInput3 == "y")
+            while (userInput3 == "y")
             {
-                Console.WriteLine("List a door it needs access to:");
-                userInput2 = Console.ReadLine();
-            }
-            else if (userInput3 == "n")
-            {
-                ReduceCode();
-            }
-            Console.Clear();
 
-           _badgeRepo.AddToBadgeDictionary(newBadge.BadgeID, newBadge);
+                if (userInput3 == "y")
+                {
+
+                    Console.WriteLine("List a door it needs access to:");
+                    userInput2 = Console.ReadLine();
+                    newBadge.AccessDoorsAvailable.Add(userInput2);
+                    Console.WriteLine("Any other doors (y/n)?");
+                    userInput3 = Console.ReadLine().ToLower();
+
+                    while (!userChoices.Any(userInput3.Contains))
+                    {
+                        Console.WriteLine("y or n");
+                        userInput3 = Console.ReadLine();
+                    }
+
+
+                }
+                else if (userInput3 == "n")
+                {
+                    ReduceCode();
+                }
+
+            }
+            _badgeRepo.AddToBadgeDictionary(newBadge.BadgeID, newBadge);
+            Console.Clear();
         }
         private void UpdateABadge()
         {
             Console.Clear();
-            
+
             Badges updatedBadge = new Badges();
-            
+
 
             Console.WriteLine("What is the Badge number to update?");
             string userInput = Console.ReadLine();
-           Badges selectedBadge = _badgeRepo.GetABadgeByID(userInput);
+            Badges selectedBadge = _badgeRepo.GetABadgeByID(userInput);
 
 
             Console.WriteLine($"{selectedBadge.BadgeID} has access to doors");
@@ -137,7 +153,7 @@ namespace GoldBadge_Challenge03
             {
                 DisplayBadge(badges);
             }
-            ReduceCode(); 
+            ReduceCode();
         }
         //Helper Methods
         private void DisplayBadge(KeyValuePair<string, Badges> badges)
