@@ -12,7 +12,7 @@ namespace GoldBadge_Challenge03
 
         public void Run()
         {
-            //SeedBadges(); 
+            SeedBadges(); 
 
             DisplayMenu();
         }
@@ -21,6 +21,7 @@ namespace GoldBadge_Challenge03
             bool keepRunning = true;
             while (keepRunning)
             {
+                Console.Clear();
                 Console.WriteLine("Hello Security Admin, What would you like to do?\n" +
                     "1. Add a Badge\n" +
                     "2. Edit a Badge\n" +
@@ -66,7 +67,7 @@ namespace GoldBadge_Challenge03
             Console.WriteLine("List a door it needs access to:");
             string userInput2 = Console.ReadLine();
             newBadge.AccessDoorsAvailable.Add(userInput2); 
-
+            
             Console.WriteLine("Any other doors (y/n)?");
             string userInput3 = Console.ReadLine().ToLower();
             List<string> userChoices = new List<string> { "y", "n" };
@@ -84,6 +85,9 @@ namespace GoldBadge_Challenge03
             {
                 ReduceCode();
             }
+            Console.Clear();
+
+           _badgeRepo.AddToBadgeDictionary(newBadge.BadgeID, newBadge);
         }
         private void UpdateABadge()
         {
@@ -94,10 +98,10 @@ namespace GoldBadge_Challenge03
 
             Console.WriteLine("What is the Badge number to update?");
             string userInput = Console.ReadLine();
-           KeyValuePair<string, Badges> selectedBadge = _badgeRepo.GetABadgeByID(userInput);
+           Badges selectedBadge = _badgeRepo.GetABadgeByID(userInput);
 
 
-            Console.WriteLine($"{selectedBadge.Key} has access to doors{selectedBadge.Value.AccessDoorsAvailable}");
+            Console.WriteLine($"{selectedBadge.BadgeID} has access to doors{selectedBadge.AccessDoorsAvailable.ToArray()}");
             
             Console.WriteLine("What would you like to do?\n" +
                 "1. Remove a Door\n" +
@@ -108,14 +112,14 @@ namespace GoldBadge_Challenge03
                 case "1":
                     Console.WriteLine("Which door would you like to remove?");
                     string userInput3 = Console.ReadLine();
-                    selectedBadge.Value.AccessDoorsAvailable.Remove(userInput3);
-                    Console.WriteLine($"{selectedBadge.Key} has access to {selectedBadge.Value.AccessDoorsAvailable}");
+                    selectedBadge.AccessDoorsAvailable.Remove(userInput3);
+                    Console.WriteLine($"{selectedBadge.BadgeID} has access to {selectedBadge.AccessDoorsAvailable}");
                     break;
                 case "2":
                     Console.WriteLine("Which door would you like to add?");
                     string userInput4 = Console.ReadLine();
-                    selectedBadge.Value.AccessDoorsAvailable.Add(userInput4);
-                    Console.WriteLine($"{selectedBadge.Key} has access to {selectedBadge.Value.AccessDoorsAvailable}");
+                    selectedBadge.AccessDoorsAvailable.Add(userInput4);
+                    Console.WriteLine($"{selectedBadge.BadgeID} has access to {selectedBadge.AccessDoorsAvailable}");
                     break;
             }
 
@@ -125,14 +129,24 @@ namespace GoldBadge_Challenge03
             Console.Clear();
 
             Dictionary<string, Badges> listOfBadges = _badgeRepo.GetKeyValuePairs();
-
             ReduceCode(); 
         }
         //Helper Methods
-        //private void DisplayBadge(KeyValuePair<string, Badges> badges)
+        //private void DisplayBadge(Badges badges)
         //{
-        //    Console.WriteLine($" Badge #\n {badges.Key}\n Door Access\n {badges.Value.AccessDoorsAvailable}");
+        //    Console.WriteLine($" Badge #\n {badges.BadgeID}\n Door Access\n {badges.AccessDoorsAvailable}");
         //}
+        private void SeedBadges()
+        {
+            Badges exampleBadge1 = new Badges("12345", new List<string>() { "A1", "A2", "A3" });
+            Badges exampleBadge2 = new Badges("22345", new List<string>() { "A1", "A2", "A3" });
+            Badges exampleBadge3 = new Badges("32345", new List<string>() { "B1", "B2", "B3" });
+
+            _badgeRepo.AddToBadgeDictionary(exampleBadge1.BadgeID, exampleBadge1);
+            _badgeRepo.AddToBadgeDictionary(exampleBadge2.BadgeID, exampleBadge2);
+            _badgeRepo.AddToBadgeDictionary(exampleBadge3.BadgeID, exampleBadge3);
+
+        }
         private void ReduceCode()
         {
             Console.WriteLine("Press any key to continue...");

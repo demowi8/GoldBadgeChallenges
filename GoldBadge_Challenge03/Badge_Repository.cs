@@ -32,13 +32,13 @@ namespace GoldBadge_Challenge03
         {
             return BadgesAndAccessDoors;
         }
-        public KeyValuePair<string, Badges> GetABadgeByID(string badgeID)
+        public Badges GetABadgeByID(string badgeID)
         {
             foreach(KeyValuePair<string, Badges> badge in BadgesAndAccessDoors)
             {
                 if (badge.Key == badgeID)
                 {
-                    return badge;
+                    return badge.Value;
                 }
             }
                 return default;

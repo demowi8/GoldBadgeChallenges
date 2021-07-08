@@ -1,6 +1,7 @@
 ﻿using GoldBadge_Challenge03;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace GoldBadge_Challenge03UnitTests
 {
@@ -9,21 +10,26 @@ namespace GoldBadge_Challenge03UnitTests
     {
         private Badge_Repository _repo;
         private Badges _badge;
+        private List<string> _doorAccess;
         [TestInitialize]
         public void Arrange()
         {
             _repo = new Badge_Repository();
-            _badge.AccessDoorsAvailable.Add("A1");
-            _badge = new Badges("12345", _badge.AccessDoorsAvailable);
-            _repo.AddToBadgeDictionary(_badge); 
+            
+            _doorAccess = new List<string>() { "A1", "A2" };
+
+            _badge = new Badges("12345", _doorAccess);
         }
         [TestMethod]
-        public void TestMethod1()
+        public void AddToDictionary_ShouldGetCorrectBool()
         {
             //Arrange
-            
+            Arrange();
             //Act
+             
+            bool addBadge = _repo.AddToBadgeDictionary("12345",_badge);
             //Assert
+            Assert.IsTrue(addBadge);
         }
     }
 }
